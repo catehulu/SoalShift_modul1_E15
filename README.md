@@ -42,6 +42,7 @@ password=`< /dev/urandom tr -dc 0-9 | head -c1 >> $check`
 untuk generate password digunakan file urandom yang terdapat pada linux. File tersebut akan dijadikan file input, lalu dengan tr akan dihapus karakter yang kita inginkan, lalu yang dihapus tersebut akan disimpan. Setelah itu dari string yang didapat diambil dari awal sesuai yang diinginkan. Kami membuat proses tersebut 3 kali agar memastikan pasti terdapat angka termasuk dalam password tersebut. Setelah itu password dimasukkan ke file dengan nama yang telah dicheck pada proses diatas.
 
 
+
 # NOMOR 4
 
 Soal ini meminta script untuk melakukan backup terhadap file syslog tetapi dengan penengkripsian terhadap file tersebut sesuai dengan jam dimana file tersebut terbuat.
@@ -81,6 +82,24 @@ to_change="`echo {a..z} | tr -d " "``echo {A..Z} | tr -d " "`"
 
 `tr $enc $to_change < /var/log/syslog > "$file"`
 ```
+
+kalau untuk dekripsinya caranya persis sama dengan enkripsi, hanya pada bagian assign variabel indeksnya dikurangi dengan jamnya, bukan ditambah. Untuk script dekripsi, membutuhkan argumen nama file. Dari nama file tersebut diambil jam yang akan dijadikan key untuk dekripsi. Jika array diakses dengan index minus, maka array akan mengakses mulai dari index terakhir.
+```
+file="$1"
+filedec="$1dec"
+jam="${file:0:2}"
+```
+lalu dilakukan prosesnya tetapi dikurangi
+```
+for (( i=0; i<26; i++)); do
+    dec="$dec${to_change_low:$i-jam:1}"
+done
+
+for (( i=0; i<26; i++)); do
+    dec="$dec${to_change_up:$i-jam:1}"
+done
+```
+
 crontab
 @hourly bash soal4.sh
 
