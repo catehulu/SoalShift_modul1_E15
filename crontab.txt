@@ -1,5 +1,7 @@
 #soal 1
 14 14 14 2 5 /bin/bash /home/johnforjc/sisop/praktikum/soal1.sh
+#soal 4
+@hourly /bin/bash /home/catehulu/sisop/SoalShift_modul1_E15/soal4.sh
 #soal 5
 2-30/6 * * * * /bin/bash /home/johnforjc/sisop/praktikum/soal5.sh
 
