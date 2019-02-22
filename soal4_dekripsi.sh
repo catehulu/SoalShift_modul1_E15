@@ -20,4 +20,4 @@ done
 
 to_change="`echo {a..z} | tr -d " "``echo {A..Z} | tr -d " "`"
 
-`tr $dec $to_change < "$file" > "$filedec"`
+`tr $to_change $dec < "$file" > "$filedec"`

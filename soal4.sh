@@ -26,4 +26,8 @@ done
 
 to_change="`echo {a..z} | tr -d " "``echo {A..Z} | tr -d " "`"
 
-`tr $enc $to_change < /var/log/syslog > "$file"`
+# echo "$jam"
+# echo "$enc"
+# echo "$to_change"
+
+`tr $to_change $enc < /var/log/syslog > "$file"`
