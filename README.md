@@ -1,5 +1,19 @@
 # SoalShift_modul1_E15
 
+# NOMOR 1
+Pada soal nomor 1, kita diminta untuk mendecode sebuah folder yang berisi dengan file file yang telah didecode. Langkah pertama yang dilakukan adalah dengan menggunakan base64 yang berfungsi untuk encode atau decode sebuah data, dengan option "base64 -d" yang artinya kita mendecode sebuah file. Lalu hexadump digunakan untuk membaca hexadecimal file menjadi binary file dengan perintah "xxd -r". Karena dalam file terdapat lebih dari satu file maka yang perlu dilakukan adalah membuat perulangan dari file pertama hingga file terakhir dalam folder tersebut. Untuk cron kita menggunakan config 14 14 14 2 5 /bin/bash soal1.sh atau bisa juga dalam 14 14 14 FEB FRI /bin/bash soal1.sh.
+
+# NOMOR 2
+Pada soal nomor 2, kita diminta untuk mencari negara dengan penjualan paling banyak, product line dalam negara yang sebelumnya sudah dicari, dan juga produk produk dari product line yang didapat pada hasil sebelumnya. Dalam hal ini kita menggunakan awk untuk mengolah data yang ada pada file csv. Ada beberapa hal penting yang kita gunakan yaitu:
+
+-. FS "," artinya awk akan memisahkan text menjadi field field tersendiri jika bertemu dengan tanda koma(karena csv adalah format file yang dipisahakan dengan tanda koma)
+
+-. -v var artinya dalam awk tersebut kita membuat variabel bernama var
+
+-. NR artinya berapa banyak baris yang kita ambil
+
+-. sort -rg artinya mengurutkan secara terbalik(-r karena default dari sort pada linux adalah ascending) dan juga yang diurutkan berdasarkan data yang bersifat numerik(-g)
+
 # NOMOR 3
 
 Soal ini meminta untuk membuatkan script yang mengenerate password 12 karakter yang terdiri dari alfabet uppercase dan lowercase serta angka. Password tersebut disimpan dalam file benama "passwordX.txt." dimana x adalah nomor file tersebut. nomor file tersebut increment sesuai dengan file keberapa yang terakhir dibuat.
@@ -69,3 +83,9 @@ to_change="`echo {a..z} | tr -d " "``echo {A..Z} | tr -d " "`"
 ```
 crontab
 @hourly bash soal4.sh
+
+# NOMOR 5
+
+Pada soal nomor 5, kita diminta untuk mencari syslog dengan adanya kata CRON dan juga tidak diketemukannya kata SUDO(case insensitive) sekaligus mencetak hasil tersebut yang mempunyai field sebanyak kurang dari 13. Pada hal ini kita menggunakan perintah awk. Adanya NF dalam script awk tersebut artinya banyaknya field yang berada dalam suatu baris. Hal ini digunakan untuk memenuhi syarat dari nomor 5b.
+Untuk konfigurasi cron nya dapat digunakan dengan cara
+* 2-30/2 * * * /bin/bash soal5.sh
