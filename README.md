@@ -80,7 +80,7 @@ setelah itu menggunakan tr diganti seluruh karakter didalam syslog lalu diinputk
 ```
 to_change="`echo {a..z} | tr -d " "``echo {A..Z} | tr -d " "`"
 
-`tr $enc $to_change < /var/log/syslog > "$file"`
+`tr $to_change $enc < /var/log/syslog > "$file"`
 ```
 
 kalau untuk dekripsinya caranya persis sama dengan enkripsi, hanya pada bagian assign variabel indeksnya dikurangi dengan jamnya, bukan ditambah. Untuk script dekripsi, membutuhkan argumen nama file. Dari nama file tersebut diambil jam yang akan dijadikan key untuk dekripsi. Jika array diakses dengan index minus, maka array akan mengakses mulai dari index terakhir.
